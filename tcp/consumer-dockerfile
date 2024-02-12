@@ -1,0 +1,6 @@
+FROM python:3.8
+WORKDIR /app
+COPY consumer.py .
+COPY pesos.txt .
+
+CMD ["python", "./consumer.py"]

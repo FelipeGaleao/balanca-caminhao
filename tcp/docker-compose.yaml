@@ -1,0 +1,25 @@
+version: '3'
+services:
+  producer:
+    build:
+      context: .
+      dockerfile: producer-dockerfile
+    networks:
+      - mynetwork
+    depends_on:
+      - consumer
+    deploy:
+      replicas: 3
+
+  consumer:
+    build: 
+      context: .
+      dockerfile: consumer-dockerfile
+>
+    volumes:
+      - ./pesos.txt:/app/pesos.txt
+    networks:
+      - mynetwork
+      
+networks:
+  mynetwork:
